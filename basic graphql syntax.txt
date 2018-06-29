@@ -1,0 +1,59 @@
+
+// Read or Get Data
+
+{
+  Google: company(id: "2") {
+    ...companyDetails
+    users{
+      ...userDetail
+    }
+  }
+
+  apple: company(id: "1") {
+    ...companyDetails
+    users{
+      ...userDetail
+    }
+  }
+}
+
+fragment companyDetails on Company {
+  id
+  name
+  description
+}
+
+
+fragment userDetail on User{
+  id
+  firstName
+}
+
+
+
+=============================================
+
+// Add, Edit and Delete Data
+
+mutation {
+  addUser(firstName: "cedrick", age: 23 ){
+    id
+    firstName
+    age
+  }
+
+  deleteUser(id: "2" ){
+    id
+    firstName
+    age
+  }
+
+  updateUser(id: "40", firstName: "elmo", age: 21, companyId: "2"){
+    id
+    firstName
+    age
+    company{
+      name
+    }
+  }
+}
